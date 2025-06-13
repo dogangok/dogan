@@ -29,7 +29,7 @@ export default function Menu() {
             className={styles.menuItem}
             href={item.href}
             target={item.target}
-            rel={item.rel}
+            rel={"rel" in item ? item.rel : undefined}
           >
             {item.label}
           </Link>
