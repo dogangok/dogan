@@ -1,13 +1,24 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { type FormEvent, useEffect, useRef } from "react";
 import styles from "./search-form.module.css";
 
 interface SearchFormProps {
   isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export default function SearchForm({ isOpen = false }: SearchFormProps) {
+export default function SearchForm({ isOpen = false, onClose }: SearchFormProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  useEffect(() => {
+    if (!isOpen && inputRef.current) {
+      // Clear input and remove focus when closing
+      inputRef.current.value = '';
+      inputRef.current.blur();
+    }
+  }, [isOpen]);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle search submission
@@ -16,14 +27,25 @@ export default function SearchForm({ isOpen = false }: SearchFormProps) {
     console.log("Search for:", searchQuery);
   };
 
+  const handleFormMouseDown = (e: React.MouseEvent) => {
+    // Prevent mousedown from propagating when form is not visible
+    if (!isOpen) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
   return (
     <form
       className={`${styles.searchForm} ${isOpen ? styles.isOpen : ""}`}
       action="/"
       method="get"
       onSubmit={handleSubmit}
+      onMouseDown={handleFormMouseDown}
+      data-search-form
     >
       <input
+        ref={inputRef}
         type="search"
         name="s"
         id="s"

@@ -115,23 +115,3 @@
 }
 
 /* Hover effects */
-.headerBtn::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 2rem;
-  height: 2rem;
-  background: var(--c-detail);
-  border-radius: 50%;
-  opacity: 0;
-  transition-duration: var(--a-speed);
-  transition-timing-function: var(--a-ease);
-  transition-property: opacity;
-  z-index: -1;
-}
-
-.headerBtn:hover::before {
-  opacity: 1;
-}

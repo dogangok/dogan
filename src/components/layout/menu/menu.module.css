@@ -50,7 +50,6 @@
   font-size: var(--f-size);
   line-height: 1rem;
   display: inline-block;
-  margin: 0.25rem;
 }
 
 .menuItem:last-child {

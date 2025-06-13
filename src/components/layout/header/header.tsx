@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "../../common/logo/logo";
 import SearchForm from "../../common/search-form/search-form";
 import styles from "./header.module.css";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const toggleColorScheme = () => {
     document.documentElement.classList.toggle("inverted");
@@ -16,12 +17,51 @@ export default function Header() {
     localStorage.setItem("colorScheme", isInverted ? "inverted" : "default");
   };
 
-  const toggleSearch = () => {
+  const toggleSearch = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Blur any focused element to prevent validation popups
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setIsSearchOpen(!isSearchOpen);
   };
 
+  useEffect(() => {
+    if (!isSearchOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const searchForm = document.querySelector('[data-search-form]');
+      const searchButton = document.querySelector(`.${styles.btnSearch}`);
+      
+      // If clicking the search button, do nothing - let toggleSearch handle it
+      if (searchButton && searchButton.contains(target)) {
+        return;
+      }
+      
+      // If clicking inside the search form, keep it open
+      if (searchForm && searchForm.contains(target)) {
+        return;
+      }
+      
+      // Otherwise close the search
+      setIsSearchOpen(false);
+    };
+
+    // Add listener on next tick to avoid catching the opening click
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 0);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isSearchOpen]);
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={headerRef}>
       <div className={`${styles.headerInner} border-bottom`}>
         <button
           type="button"
@@ -65,7 +105,7 @@ export default function Header() {
           </svg>
         </button>
 
-        <SearchForm isOpen={isSearchOpen} />
+        <SearchForm isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       </div>
     </header>
   );
