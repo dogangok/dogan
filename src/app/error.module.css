@@ -1,0 +1,61 @@
+.main {
+  width: 100%;
+}
+
+.errorContainer {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.errorContent {
+  max-width: 23rem;
+  text-align: center;
+}
+
+.errorTitle {
+  font-size: calc(var(--f-size) * var(--f-scale-l));
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.errorActions {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.errorButton {
+  background: none;
+  border: 1px solid var(--c-detail);
+  color: var(--c-text);
+  font-size: var(--f-size);
+  font-family: inherit;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--a-speed) var(--a-ease);
+}
+
+.errorButton:hover {
+  background: var(--c-text);
+  color: var(--c-bg);
+}
+
+.errorLink {
+  color: var(--c-text);
+  text-decoration: none;
+  transition: color var(--a-speed) var(--a-ease);
+}
+
+.errorLink::before {
+  content: "← ";
+}
+
+.errorLink:hover {
+  color: var(--c-detail);
+}
