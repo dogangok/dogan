@@ -6,7 +6,7 @@ export default function Archives() {
     <nav className={styles.archives}>
       <div className={`${styles.archivesInner} border-top`}>
         <h2 className={styles.archivesTitle}>Support What We Do</h2>
-        <Link className={`button ${styles.archivesButton}`} href="/membership">
+        <Link className={styles.archivesButton} href="/membership">
           Become a Member
         </Link>
       </div>
