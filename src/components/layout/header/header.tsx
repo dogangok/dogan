@@ -104,10 +104,7 @@ export default function Header() {
           </svg>
         </button>
 
-        <SearchForm
-          isOpen={isSearchOpen}
-          onClose={() => setIsSearchOpen(false)}
-        />
+        <SearchForm isOpen={isSearchOpen} />
       </div>
     </header>
   );
