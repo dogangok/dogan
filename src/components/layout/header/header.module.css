@@ -1,0 +1,137 @@
+.header {
+  padding: 0 1rem;
+}
+
+.headerInner {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.headerBtn {
+  cursor: pointer;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  grid-row: 1;
+}
+
+.headerBtn svg {
+  fill: var(--c-text);
+  width: 100%;
+  height: 100%;
+}
+
+.btnScheme {
+  grid-column: 1 / 2;
+  order: 1;
+}
+
+.btnSearch {
+  grid-column: 3 / 4;
+  justify-self: end;
+  order: 3;
+}
+
+.headerHome {
+  display: block;
+  height: 2rem;
+  width: auto;
+  grid-column: 2 / 3;
+  grid-row: 1;
+  color: var(--c-text);
+}
+
+/* Theme toggle button styles */
+.btnScheme::after {
+  content: "Dark";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  transform: translateX(0.5rem);
+  opacity: 0;
+  transition-duration: var(--a-speed);
+  transition-timing-function: var(--a-ease);
+  transition-property: transform, opacity;
+  font-size: var(--f-size);
+  line-height: 1rem;
+  white-space: nowrap;
+}
+
+:global(.inverted) .btnScheme::after {
+  content: "Light";
+}
+
+@media (prefers-color-scheme: dark) {
+  .btnScheme::after {
+    content: "Light";
+  }
+
+  :global(.inverted) .btnScheme::after {
+    content: "Dark";
+  }
+}
+
+.btnScheme:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.btnScheme:hover .inner {
+  transform: scale(0);
+}
+
+.inner {
+  transition: transform 200ms ease-out;
+  transform-origin: 10px;
+  fill: var(--c-bg);
+}
+
+.outer {
+  fill: var(--c-text);
+}
+
+/* Search button styles */
+.btnSearch::after {
+  content: "Search";
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+  transform: translateX(-0.5rem);
+  opacity: 0;
+  transition-duration: var(--a-speed);
+  transition-timing-function: var(--a-ease);
+  transition-property: transform, opacity;
+  font-size: var(--f-size);
+  line-height: 1rem;
+  white-space: nowrap;
+}
+
+.btnSearch:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover effects */
+.headerBtn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+  background: var(--c-detail);
+  border-radius: 50%;
+  opacity: 0;
+  transition-duration: var(--a-speed);
+  transition-timing-function: var(--a-ease);
+  transition-property: opacity;
+  z-index: -1;
+}
+
+.headerBtn:hover::before {
+  opacity: 1;
+}

@@ -1,0 +1,152 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: none;
+  text-decoration: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+  appearance: none;
+  border: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Design Tokens */
+:root {
+  /* Colors */
+  --c-bg: hsl(0, 0%, 100%);
+  --c-text: hsl(0, 0%, 10%);
+  --c-text-alt: hsl(0, 0%, 10%);
+  --c-detail: hsl(0, 0%, 90%);
+
+  /* Typography */
+  --f-family: "Inter", sans-serif;
+  --f-size: 15px;
+  --f-height: 24px;
+  --f-weight: 400;
+  --f-scale-s: 0.87;
+  --f-scale-m: 1.2;
+  --f-scale-l: 1.47;
+
+  /* Layout */
+  --l-wide: 39rem;
+  --l-text: 25rem;
+
+  /* Animation */
+  --a-speed: 150ms;
+  --a-ease: ease-out;
+
+  /* Apply base styles */
+  font-size: var(--f-height);
+  font-family: var(--f-family);
+  font-weight: var(--f-weight);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-feature-settings: "tnum" 1, "case" 1, "ss01" 1, "ss03" 1;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg: hsl(0, 0%, 10%);
+    --c-text: hsl(0, 0%, 100%);
+    --c-text-alt: hsl(0, 0%, 90%);
+    --c-detail: hsl(0, 0%, 20%);
+  }
+}
+
+/* Selection styles */
+::selection {
+  color: var(--c-text-alt);
+  background: var(--c-detail);
+}
+
+/* Inverted theme class */
+html.inverted {
+  --c-bg: hsl(0, 0%, 10%);
+  --c-text: hsl(0, 0%, 100%);
+  --c-text-alt: hsl(0, 0%, 90%);
+  --c-detail: hsl(0, 0%, 20%);
+}
+
+@media (prefers-color-scheme: dark) {
+  html.inverted {
+    --c-bg: hsl(0, 0%, 100%);
+    --c-text: hsl(0, 0%, 10%);
+    --c-text-alt: hsl(0, 0%, 10%);
+    --c-detail: hsl(0, 0%, 90%);
+  }
+}
+
+/* Base typography */
+*,
+::after,
+::before {
+  font-size: var(--f-size);
+  line-height: 1rem;
+  letter-spacing: -0.00879776em;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Utility classes */
+.border-bottom,
+.border-top {
+  position: relative;
+}
+
+.border-around {
+  border: 1px solid var(--c-detail);
+}
+
+.border-top::before,
+.border-bottom::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--c-detail);
+}
+
+.border-top::before {
+  top: 0;
+}
+
+.border-bottom::after {
+  bottom: 0;
+}
+
+/* Button styles */
+.button {
+  font-size: var(--f-size);
+  line-height: 1rem;
+  letter-spacing: -0.00879776em;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999999px;
+  box-shadow: inset 0px 0px 0px 1px var(--c-detail);
+  color: gray;
+  transition-duration: var(--a-speed);
+  transition-timing-function: var(--a-ease);
+  transition-property: box-shadow, color, background;
+}
+
+.button:hover {
+  background: var(--c-text);
+  box-shadow: inset 0px 0px 0px 1px var(--c-text);
+  color: var(--c-detail);
+}

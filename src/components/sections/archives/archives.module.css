@@ -1,0 +1,39 @@
+.archives {
+  padding: 0 1rem;
+}
+
+.archivesInner {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.archivesTitle {
+  font-size: calc(var(--f-size) * var(--f-scale-l));
+  line-height: 1.3rem;
+  padding-top: 0;
+  padding-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.archivesButton {
+  font-size: var(--f-size);
+  line-height: 1rem;
+  letter-spacing: -0.00879776em;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999999px;
+  box-shadow: inset 0px 0px 0px 1px var(--c-text);
+  background: var(--c-text);
+  color: var(--c-detail);
+  transition-duration: var(--a-speed);
+  transition-timing-function: var(--a-ease);
+  transition-property: box-shadow, color, background;
+}
+
+.archivesButton:hover {
+  background: var(--c-bg);
+  box-shadow: inset 0px 0px 0px 1px var(--c-detail);
+  color: gray;
+}
