@@ -32,31 +32,30 @@ export default function Header() {
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      const searchForm = document.querySelector('[data-search-form]');
+      const searchForm = document.querySelector("[data-search-form]");
       const searchButton = document.querySelector(`.${styles.btnSearch}`);
-      
+
+      // Early return if elements not found
+      if (!searchForm || !searchButton) return;
+
       // If clicking the search button, do nothing - let toggleSearch handle it
-      if (searchButton && searchButton.contains(target)) {
-        return;
-      }
-      
+      if (searchButton.contains(target)) return;
+
       // If clicking inside the search form, keep it open
-      if (searchForm && searchForm.contains(target)) {
-        return;
-      }
-      
+      if (searchForm.contains(target)) return;
+
       // Otherwise close the search
       setIsSearchOpen(false);
     };
 
     // Add listener on next tick to avoid catching the opening click
     const timer = setTimeout(() => {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     }, 0);
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isSearchOpen]);
 
@@ -105,7 +104,10 @@ export default function Header() {
           </svg>
         </button>
 
-        <SearchForm isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+        <SearchForm
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
       </div>
     </header>
   );

@@ -5,16 +5,15 @@ import styles from "./search-form.module.css";
 
 interface SearchFormProps {
   isOpen?: boolean;
-  onClose?: () => void;
 }
 
-export default function SearchForm({ isOpen = false, onClose }: SearchFormProps) {
+export default function SearchForm({ isOpen = false }: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  
+
   useEffect(() => {
     if (!isOpen && inputRef.current) {
       // Clear input and remove focus when closing
-      inputRef.current.value = '';
+      inputRef.current.value = "";
       inputRef.current.blur();
     }
   }, [isOpen]);

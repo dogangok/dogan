@@ -1,8 +1,12 @@
+import Archives from "@/components/layout/archives/archives";
 import Footer from "@/components/layout/footer/footer";
 import Header from "@/components/layout/header/header";
 import Menu from "@/components/layout/menu/menu";
+import Newsletter from "@/components/layout/newsletter/newsletter";
+import Sponsors from "@/components/layout/sponsors/sponsors";
 import ThemeProvider from "@/components/providers/ThemeProvider";
-import type { Metadata } from "next";
+import { SITE_METADATA, SITE_VIEWPORT } from "@/constants/metadata";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -14,12 +18,8 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Minimalissimo – Minimalism in Design",
-  description:
-    "Minimalissimo magazine is a celebration of minimalism in design. We aim to inspire creatives and showcase the finest examples of architecture, …",
-  viewport: "width=device-width, initial-scale=1.0, maximum-scale=5.0",
-};
+export const metadata: Metadata = SITE_METADATA;
+export const viewport: Viewport = SITE_VIEWPORT;
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -33,6 +33,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Header />
           <Menu />
           {children}
+          <Archives />
+          <Newsletter />
+          <Sponsors />
           <Footer />
         </ThemeProvider>
       </body>
