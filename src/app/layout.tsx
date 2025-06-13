@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Minimalissimo – Minimalism in Design",
   description:
     "Minimalissimo magazine is a celebration of minimalism in design. We aim to inspire creatives and showcase the finest examples of architecture, …",
+  viewport: "width=device-width, initial-scale=1.0, maximum-scale=5.0",
 };
 
 interface RootLayoutProps {

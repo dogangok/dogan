@@ -37,9 +37,12 @@
   letter-spacing: -0.00315856em;
   margin: 0 0.5rem 0 0;
   color: gray;
-  position: relative;
-  background-image: linear-gradient(to left, gray 50%, var(--c-text) 50%);
-  background-size: 200% 1px;
+  background-image: linear-gradient(
+    to right,
+    gray 33.33333%,
+    var(--c-bg) 66.66666%
+  );
+  background-size: 300% 1px;
   background-repeat: no-repeat;
   background-position: bottom right;
   transition: background-position 400ms var(--a-speed);

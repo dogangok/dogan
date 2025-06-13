@@ -14,8 +14,9 @@
 
 .newsletterInput {
   font-size: var(--f-size);
-  line-height: calc(1rem - 2px);
+  line-height: 1rem;
   letter-spacing: -0.00879776em;
+  line-height: calc(1rem - 2px);
   border: 1px solid var(--c-detail);
   border-radius: 9999px;
   padding: 0.5rem 2rem 0.5rem 1rem;
@@ -24,8 +25,16 @@
   z-index: 10;
   background: var(--c-bg);
   color: var(--c-text);
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+}
+
+/* Prevent zoom on iOS devices */
+@media (max-width: 767px) {
+  .newsletterInput {
+    font-size: 16px;
+  }
 }
 
 .newsletterLabel {
@@ -61,11 +70,12 @@
   font-size: var(--f-size);
   color: var(--c-bg);
   border: 1px solid var(--c-text);
-  z-index: 9999;
+  z-index: 15;
   transition-property: background, color;
   transition-duration: var(--a-speed);
   transition-timing-function: var(--a-ease);
   cursor: pointer;
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 }
