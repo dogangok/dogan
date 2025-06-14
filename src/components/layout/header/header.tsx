@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../../common/logo/logo";
@@ -8,13 +9,17 @@ import styles from "./header.module.css";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleColorScheme = () => {
-    document.documentElement.classList.toggle("inverted");
-    // Save preference to localStorage
-    const isInverted = document.documentElement.classList.contains("inverted");
-    localStorage.setItem("colorScheme", isInverted ? "inverted" : "default");
+    if (!mounted) return;
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const toggleSearch = (e: React.MouseEvent) => {

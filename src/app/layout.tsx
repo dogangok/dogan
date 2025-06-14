@@ -4,7 +4,7 @@ import Header from "@/components/layout/header/header";
 import Menu from "@/components/layout/menu/menu";
 import Newsletter from "@/components/layout/newsletter/newsletter";
 import Sponsors from "@/components/layout/sponsors/sponsors";
-import ThemeProvider from "@/components/providers/ThemeProvider";
+import ThemeProvider from "@/components/providers/theme-provider/theme-provider";
 import { SITE_METADATA, SITE_VIEWPORT } from "@/constants/metadata";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
@@ -27,7 +27,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="home">
+    <html lang="en" className="home" suppressHydrationWarning>
       <body className={`${inter.className} home`}>
         <ThemeProvider>
           <Header />

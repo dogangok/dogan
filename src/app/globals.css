@@ -69,16 +69,17 @@
   background: var(--c-detail);
 }
 
-/* Inverted theme class */
-html.inverted {
+/* Dark theme class */
+html.dark {
   --c-bg: hsl(0, 0%, 10%);
   --c-text: hsl(0, 0%, 100%);
   --c-text-alt: hsl(0, 0%, 90%);
   --c-detail: hsl(0, 0%, 20%);
 }
 
+/* When system is dark but user chooses light */
 @media (prefers-color-scheme: dark) {
-  html.inverted {
+  html.light {
     --c-bg: hsl(0, 0%, 100%);
     --c-text: hsl(0, 0%, 10%);
     --c-text-alt: hsl(0, 0%, 10%);
