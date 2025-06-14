@@ -1,5 +1,5 @@
 import ContentEditor from "@/components/content/editor/content-editor";
-import ContentGallery from "@/components/content/gallery/content-gallery";
+import Gallery from "@/components/content/gallery/gallery";
 import ContentImage from "@/components/content/image/content-image";
 import ContentIntro from "@/components/content/intro/content-intro";
 import styles from "./page.module.css";
@@ -84,7 +84,7 @@ export default function MoodsPage() {
       </ContentEditor>
 
       <ContentEditor variant="gallery">
-        <ContentGallery>
+        <Gallery images={moodImages}>
           {moodImages.map((image, index) => (
             <ContentImage
               key={image.src}
@@ -95,15 +95,16 @@ export default function MoodsPage() {
               orientation={image.orientation}
               isGallery
               isMood
-              priority={index === 0}
+              priority={index < 2}
               sizes={
                 image.orientation === "landscape"
                   ? "(max-width: 446px) 402px, (max-width: 600px) 504px, 702px"
                   : "(max-width: 446px) 402px, (max-width: 600px) 336px, 468px"
               }
+              data-image-index={index}
             />
           ))}
-        </ContentGallery>
+        </Gallery>
       </ContentEditor>
     </div>
   );

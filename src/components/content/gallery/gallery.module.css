@@ -1,11 +1,8 @@
 .gallery {
-  /* Gallery is primarily a container that works with editor */
-  /* The editor.gallery selector modifies image behavior */
   text-align: center;
   margin-bottom: 3rem !important;
 }
 
-/* Zoom overlay for gallery navigation */
 .zoomOverlay {
   position: fixed;
   top: 0;
@@ -26,5 +23,4 @@
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  cursor: zoom-out;
 }

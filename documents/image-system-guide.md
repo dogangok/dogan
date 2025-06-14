@@ -162,6 +162,10 @@ sizes="(max-width: 446px) 402px, (max-width: 600px) 504px, 702px"
   width: 100%;
   display: block;
   position: relative;
+  border: none;      /* Important for button element */
+  padding: 0;        /* Reset button defaults */
+  background: none;  /* Remove button background */
+  cursor: zoom-in;
 }
 
 .img {
@@ -177,6 +181,8 @@ sizes="(max-width: 446px) 402px, (max-width: 600px) 504px, 702px"
 }
 ```
 
+**Note**: The `.imgWrapper` is now a `<button>` element for accessibility, so we reset button styles.
+
 ### Context-Specific Classes
 
 1. **`.firstImage`** - Larger sizing for article hero images
@@ -189,6 +195,9 @@ Images follow a consistent spacing pattern:
 - **Vertical**: 3rem minimum, scaling up to 5rem for mood galleries
 - **Horizontal**: 0 on mobile, up to 2.5rem for mood galleries
 - **Following content**: Additional 3rem margin when after text
+- **Gallery bottom margin**: 3rem !important on ContentGallery component
+
+**Important**: Use `!important` for gallery and mood-specific spacing to ensure consistency across different contexts and override any inherited styles.
 
 ## Integration with ContentEditor
 
@@ -227,6 +236,35 @@ When images are within a `ContentGallery`:
 - Escape key closes zoom view
 - Smooth transitions between images
 - Higher quality (90) for zoomed images
+
+**Important**: ContentGallery respects external `onImageClick` handlers. If provided, it won't override with its own zoom state, allowing for page-level navigation systems.
+
+### Unified Page-Level Navigation
+For pages with multiple image groups that need unified navigation:
+```tsx
+// Architecture page example with unified navigation
+const [zoomedIndex, setZoomedIndex] = useState<number | null>(null);
+const allImages = [...]; // Array of all image props
+
+// In render:
+<ContentImage
+  {...allImages[0]}
+  onImageClick={() => setZoomedIndex(0)}
+/>
+<ContentGallery>
+  <ContentImage {...allImages[1]} onImageClick={() => setZoomedIndex(1)} />
+  <ContentImage {...allImages[2]} onImageClick={() => setZoomedIndex(2)} />
+</ContentGallery>
+
+// Custom zoom overlay with page-level navigation
+{zoomedIndex !== null && (
+  <button type="button" onClick={() => setZoomedIndex(null)}>
+    <img src={allImages[zoomedIndex].src} />
+  </button>
+)}
+```
+
+This pattern enables keyboard navigation across ALL images on a page, not just within individual galleries.
 
 ### CSS Implementation
 ```css
@@ -268,8 +306,14 @@ When images are within a `ContentGallery`:
 
 1. **Required Alt Text**: Every image must have descriptive alt text
 2. **Semantic HTML**: Uses `<figure>` and `<figcaption>` elements
-3. **Keyboard Support**: Images are not interactive by default
-4. **Screen Reader Support**: Proper ARIA attributes inherited from Next.js Image
+3. **Keyboard Support**: 
+   - Images wrapped in semantic `<button>` elements for keyboard access
+   - Full keyboard navigation in galleries (arrow keys + escape)
+   - Proper focus management
+4. **Screen Reader Support**: 
+   - Proper ARIA attributes inherited from Next.js Image
+   - Descriptive aria-labels on interactive elements
+   - Button elements for all clickable areas
 
 ## Common Patterns
 

@@ -19,6 +19,7 @@ interface ContentImageProps {
   isGallery?: boolean;
   isMood?: boolean;
   onImageClick?: () => void;
+  "data-image-index"?: number;
 }
 
 export default function ContentImage({
@@ -36,6 +37,7 @@ export default function ContentImage({
   isGallery = false,
   isMood = false,
   onImageClick,
+  "data-image-index": dataImageIndex,
 }: ContentImageProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const paddingBottom = getPaddingBottom(width, height);
@@ -58,6 +60,10 @@ export default function ContentImage({
     .join(" ");
 
   const handleImageClick = () => {
+    // If data-image-index is set, let the parent handle zoom
+    if (dataImageIndex !== undefined) {
+      return;
+    }
     if (onImageClick) {
       onImageClick();
     } else {
@@ -79,6 +85,7 @@ export default function ContentImage({
           style={{ paddingBottom: `${paddingBottom}%` }}
           onClick={handleImageClick}
           aria-label={`View ${alt || "image"} in full size`}
+          data-image-index={dataImageIndex}
         >
           <Image
             alt={alt}
