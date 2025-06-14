@@ -1,10 +1,5 @@
-.contentWrapper {
+.content-wrapper {
   /* Override gallery default styles for page-level usage */
   text-align: left;
-  margin-bottom: 0 !important;
-}
-
-.imageGroup {
-  text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }

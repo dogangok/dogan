@@ -2,7 +2,7 @@
   padding: 0 1rem;
 }
 
-.metaContent {
+.meta-content {
   margin: 3rem auto;
   max-width: var(--l-text);
   display: grid;
@@ -13,7 +13,7 @@
   padding: 2rem 0 0;
 }
 
-.metaContent::before {
+.meta-content::before {
   content: "";
   position: absolute;
   top: 0;
@@ -23,15 +23,13 @@
   background: var(--c-detail);
 }
 
-.metaItem {
-  display: contents;
-}
+/* Direct dt/dd elements without wrapper */
 
-.metaTitle {
+.meta-title {
   font-weight: 500;
 }
 
-.metaText a {
+.meta-text a {
   background-image: linear-gradient(
     to right,
     var(--c-text) 33.33333%,
@@ -39,10 +37,10 @@
   );
   background-size: 300% 1px;
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: bottom right;
   transition: background-position 400ms var(--a-speed);
 }
 
-.metaText a:hover {
-  background-position: bottom right;
+.meta-text a:hover {
+  background-position: bottom left;
 }

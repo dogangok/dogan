@@ -13,8 +13,8 @@ export default function ContentEditor({
   variant = "default",
 }: ContentEditorProps) {
   return (
-    <main className={`${styles.editor} ${styles[variant]} ${className || ""}`}>
+    <div className={`${styles.editor} ${styles[variant]} ${className || ""}`}>
       {children}
-    </main>
+    </div>
   );
 }

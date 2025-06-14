@@ -16,7 +16,7 @@
   margin-top: 3rem;
 }
 
-.editor a:not(.imgWrapper):not(.button) {
+.editor a:not(.img-wrapper):not(.button) {
   background-image: linear-gradient(
     to right,
     var(--c-text) 33.33333%,
@@ -28,7 +28,7 @@
   transition: background-position 400ms var(--a-speed);
 }
 
-.editor a:not(.imgWrapper):not(.button):hover {
+.editor a:not(.img-wrapper):not(.button):hover {
   background-position: bottom right;
 }
 
@@ -45,14 +45,9 @@
   text-align: center;
 }
 
-.mood * {
-  text-align: center;
-}
+/* Mood content uses center alignment */
 
-/* Add margin bottom to mood editor for spacing before gallery */
-.mood p:last-child {
-  margin-bottom: 3rem;
-}
+/* Mood editor follows MIMO spacing */
 
 /* Gallery variant styles */
 .gallery {
@@ -71,19 +66,4 @@
   }
 }
 
-/* Mood gallery specific */
-.mood.gallery {
-  padding-bottom: 3rem;
-}
-
-@media (min-width: 1200px) {
-  .mood.gallery {
-    padding-bottom: 4rem;
-  }
-}
-
-@media (min-width: 1500px) {
-  .mood.gallery {
-    padding-bottom: 5rem;
-  }
-}
+/* Mood gallery uses same padding as regular gallery */

@@ -1,43 +1,24 @@
-.imgFigure {
+.img-figure {
   display: inline-block;
   vertical-align: middle;
   margin: 3rem 0 0;
   width: 100%;
 }
 
-/* Gallery images inherit from base imgFigure styles */
-/* No special overrides needed to match MIMO */
-
-/* Mood gallery specific spacing - matching MIMO exactly */
-@media (min-width: 580px) {
-  .moodImage {
-    margin: 3rem 1.5rem 0;
-  }
-}
-
-@media (min-width: 1200px) {
-  .moodImage {
-    margin: 4rem 2rem 0;
-  }
-}
-
-@media (min-width: 1500px) {
-  .moodImage {
-    margin: 5rem 2.5rem 0;
-  }
-}
+/* Gallery and mood images inherit from base img-figure styles */
+/* Special spacing is handled by parent containers, not individual images */
 
 /* Spacing when image follows text or other elements */
-.imgFigure + p,
-.imgFigure + blockquote,
-.imgFigure + .question,
-.imgFigure + h2,
-.imgFigure + h3,
-.imgFigure + h4 {
+.img-figure + p,
+.img-figure + blockquote,
+.img-figure + .question,
+.img-figure + h2,
+.img-figure + h3,
+.img-figure + h4 {
   margin-top: 3rem;
 }
 
-.imgWrapper {
+.img-wrapper {
   width: 100%;
   display: block;
   position: relative;
@@ -74,72 +55,72 @@
 
 /* Image responsive sizes - matching MIMO exactly */
 @media (min-width: 446px) {
-  .imgFigure {
+  .img-figure {
     width: auto;
   }
-  .imgWrapper[data-orientation="portrait"],
-  .imgWrapper[data-orientation="square"] {
+  .img-wrapper[data-orientation="portrait"],
+  .img-wrapper[data-orientation="square"] {
     width: 268px;
   }
-  .imgWrapper[data-orientation="landscape"] {
+  .img-wrapper[data-orientation="landscape"] {
     width: 402px;
   }
 }
 
 @media (min-width: 580px) {
-  .imgFigure {
+  .img-figure {
     margin: 3rem 1.5rem 0;
   }
 }
 
 @media (min-width: 746px) {
-  .imgWrapper[data-orientation="portrait"],
-  .imgWrapper[data-orientation="square"] {
+  .img-wrapper[data-orientation="portrait"],
+  .img-wrapper[data-orientation="square"] {
     width: 366px;
   }
-  .imgWrapper[data-orientation="landscape"] {
+  .img-wrapper[data-orientation="landscape"] {
     width: 550px;
   }
 }
 
 /* First image special styles - matching MIMO's :first-of-type approach */
-.firstImage {
+.first-image {
   margin: 3rem 0 0;
   width: auto;
 }
 
 @media (max-width: 593px) {
-  .firstImage {
+  .first-image {
     width: 100%;
   }
 }
 
-.firstImage .imgWrapper {
+.first-image .img-wrapper {
   width: 100%;
 }
 
 @media (min-width: 594px) {
-  .firstImage .imgWrapper[data-orientation="portrait"],
-  .firstImage .imgWrapper[data-orientation="square"] {
+  .first-image .img-wrapper[data-orientation="portrait"],
+  .first-image .img-wrapper[data-orientation="square"] {
     width: 366px;
   }
-  .firstImage .imgWrapper[data-orientation="landscape"] {
+  .first-image .img-wrapper[data-orientation="landscape"] {
     width: 550px;
   }
 }
 
 @media (min-width: 746px) {
-  .firstImage .imgWrapper[data-orientation="portrait"],
-  .firstImage .imgWrapper[data-orientation="square"] {
+  .first-image .img-wrapper[data-orientation="portrait"],
+  .first-image .img-wrapper[data-orientation="square"] {
     width: 468px;
   }
-  .firstImage .imgWrapper[data-orientation="landscape"] {
+  .first-image .img-wrapper[data-orientation="landscape"] {
     width: 702px;
   }
 }
 
 /* Caption styles */
-.imgFigure figcaption {
+.img-figure figcaption {
   color: gray;
   font-size: calc(var(--f-size) * var(--f-scale-s));
   line-height: 1rem;
@@ -149,7 +130,7 @@
 }
 
 /* Caption link styles - matching MIMO */
-.imgFigure figcaption a:not(.imgWrapper) {
+.img-figure figcaption a:not(.img-wrapper) {
   font-size: inherit;
   background-image: linear-gradient(
     to right,
@@ -158,10 +139,10 @@
   );
   background-size: 300% 1px;
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: bottom right;
   transition: background-position 400ms var(--a-speed);
 }
 
-.imgFigure figcaption a:not(.imgWrapper):hover {
-  background-position: bottom right;
+.img-figure figcaption a:not(.img-wrapper):hover {
+  background-position: bottom left;
 }

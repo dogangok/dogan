@@ -84,7 +84,7 @@ export default function MoodsPage() {
       </ContentEditor>
 
       <ContentEditor variant="gallery">
-        <Gallery images={moodImages}>
+        <Gallery>
           {moodImages.map((image, index) => (
             <ContentImage
               key={image.src}
@@ -93,8 +93,6 @@ export default function MoodsPage() {
               width={image.width}
               height={image.height}
               orientation={image.orientation}
-              isGallery
-              isMood
               priority={index < 2}
               sizes={
                 image.orientation === "landscape"

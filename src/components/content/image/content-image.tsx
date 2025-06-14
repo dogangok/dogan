@@ -16,9 +16,6 @@ interface ContentImageProps {
   caption?: string;
   className?: string;
   isFirst?: boolean;
-  isGallery?: boolean;
-  isMood?: boolean;
-  onImageClick?: () => void;
   "data-image-index"?: number;
 }
 
@@ -34,9 +31,6 @@ export default function ContentImage({
   caption,
   className,
   isFirst = false,
-  isGallery = false,
-  isMood = false,
-  onImageClick,
   "data-image-index": dataImageIndex,
 }: ContentImageProps) {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -50,10 +44,8 @@ export default function ContentImage({
         ? "portrait"
         : "square");
   const figureClasses = [
-    styles.imgFigure,
-    isFirst && styles.firstImage,
-    isGallery && styles.galleryImage,
-    isMood && styles.moodImage,
+    styles["img-figure"],
+    isFirst && styles["first-image"],
     className,
   ]
     .filter(Boolean)
@@ -64,11 +56,7 @@ export default function ContentImage({
     if (dataImageIndex !== undefined) {
       return;
     }
-    if (onImageClick) {
-      onImageClick();
-    } else {
-      setIsZoomed(true);
-    }
+    setIsZoomed(true);
   };
 
   const handleZoomedClick = () => {
@@ -78,12 +66,16 @@ export default function ContentImage({
   return (
     <>
       <figure className={figureClasses}>
-        <button
-          type="button"
-          className={styles.imgWrapper}
+        {/* biome-ignore lint/a11y/useValidAnchor: MIMO uses anchor tags for image zoom */}
+        <a
+          href="#"
+          className={styles["img-wrapper"]}
           data-orientation={detectedOrientation}
           style={{ paddingBottom: `${paddingBottom}%` }}
-          onClick={handleImageClick}
+          onClick={(e) => {
+            e.preventDefault();
+            handleImageClick();
+          }}
           aria-label={`View ${alt || "image"} in full size`}
           data-image-index={dataImageIndex}
         >
@@ -97,10 +89,10 @@ export default function ContentImage({
             quality={quality}
             priority={priority}
           />
-        </button>
+        </a>
         {caption && <figcaption>{caption}</figcaption>}
       </figure>
-      {isZoomed && !onImageClick && (
+      {isZoomed && (
         <Image
           alt={alt}
           className={styles.zoomed}

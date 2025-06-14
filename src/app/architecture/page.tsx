@@ -104,10 +104,8 @@ export default function ArchitecturePage() {
       />
 
       <ContentEditor variant="default">
-        <Gallery images={allImages} className={styles.contentWrapper}>
-          <div className={styles.imageGroup}>
-            <ContentImage {...allImages[0]} isGallery data-image-index={0} />
-          </div>
+        <Gallery className={styles["content-wrapper"]}>
+          <ContentImage {...allImages[0]} isFirst data-image-index={0} />
 
           <p>
             There is perhaps nothing more true to minimalism than having
@@ -126,11 +124,9 @@ export default function ArchitecturePage() {
             needs.
           </p>
 
-          <div className={styles.imageGroup}>
-            <ContentImage {...allImages[1]} isGallery data-image-index={1} />
-            <ContentImage {...allImages[2]} isGallery data-image-index={2} />
-            <ContentImage {...allImages[3]} isGallery data-image-index={3} />
-          </div>
+          <ContentImage {...allImages[1]} data-image-index={1} />
+          <ContentImage {...allImages[2]} data-image-index={2} />
+          <ContentImage {...allImages[3]} data-image-index={3} />
 
           <p>
             ACOS&apos;s unique home features a completely open floor plan. The
@@ -142,11 +138,9 @@ export default function ArchitecturePage() {
             room, library, guest room, and play area.
           </p>
 
-          <div className={styles.imageGroup}>
-            <ContentImage {...allImages[4]} isGallery data-image-index={4} />
-            <ContentImage {...allImages[5]} isGallery data-image-index={5} />
-            <ContentImage {...allImages[6]} isGallery data-image-index={6} />
-          </div>
+          <ContentImage {...allImages[4]} data-image-index={4} />
+          <ContentImage {...allImages[5]} data-image-index={5} />
+          <ContentImage {...allImages[6]} data-image-index={6} />
 
           <p>
             The furniture in The Unfolding Home needs to be as multi-purpose as
@@ -172,11 +166,9 @@ export default function ArchitecturePage() {
             proves that smart and simple can create the loveliest designs.
           </p>
 
-          <div className={styles.imageGroup}>
-            <ContentImage {...allImages[7]} isGallery data-image-index={7} />
-            <ContentImage {...allImages[8]} isGallery data-image-index={8} />
-            <ContentImage {...allImages[9]} isGallery data-image-index={9} />
-          </div>
+          <ContentImage {...allImages[7]} data-image-index={7} />
+          <ContentImage {...allImages[8]} data-image-index={8} />
+          <ContentImage {...allImages[9]} data-image-index={9} />
         </Gallery>
       </ContentEditor>
 

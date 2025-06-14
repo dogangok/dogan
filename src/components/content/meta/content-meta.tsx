@@ -15,18 +15,20 @@ interface ContentMetaProps {
 export default function ContentMeta({ items, className }: ContentMetaProps) {
   return (
     <section className={`${styles.meta} ${className || ""}`}>
-      <dl className={styles.metaContent}>
+      <dl className={styles["meta-content"]}>
         {items.map((item) => (
-          <div key={item.title} className={styles.metaItem}>
-            <dt className={styles.metaTitle}>{item.title}</dt>
-            <dd className={styles.metaText}>
+          <>
+            <dt key={`${item.title}-dt`} className={styles["meta-title"]}>
+              {item.title}
+            </dt>
+            <dd key={`${item.title}-dd`} className={styles["meta-text"]}>
               {item.link && item.href ? (
                 <a href={item.href}>{item.link}</a>
               ) : (
                 item.text || ""
               )}
             </dd>
-          </div>
+          </>
         ))}
       </dl>
     </section>
