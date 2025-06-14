@@ -20,7 +20,7 @@ export default function ArchitecturePage() {
             <Image
               alt="The Unfolding Home by ACOS"
               className={styles.img}
-              src="/images/the-unfolding-home-acos-10.jpg"
+              src="/images/the-unfolding-home-acos/the-unfolding-home-acos-10.jpg"
               width={1500}
               height={1000}
               sizes="(max-width: 446px) 402px, (max-width: 600px) 504px, 702px"
@@ -35,7 +35,7 @@ export default function ArchitecturePage() {
           that serves multiple functions. The more multi-purpose an object is,
           the less need there is for more.{" "}
           <a
-            href="https://web.archive.org/web/20220125175507/http://acos.design/"
+            href="http://acos.design/"
             rel="noopener noreferrer"
             target="_blank"
           >
