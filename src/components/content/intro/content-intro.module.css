@@ -1,0 +1,23 @@
+.intro {
+  padding: 3rem 1rem 0;
+  text-align: center;
+}
+
+.introPretitle,
+.introAuthor {
+  color: gray;
+}
+
+.introTitle {
+  font-size: calc(var(--f-size) * var(--f-scale-l));
+  line-height: 1.3rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.introAuthor {
+  font-size: calc(var(--f-size) * var(--f-scale-s));
+  line-height: 1rem;
+  letter-spacing: -0.00315856em;
+}

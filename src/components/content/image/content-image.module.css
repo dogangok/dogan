@@ -1,0 +1,172 @@
+.imgFigure {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 3rem 0 0;
+  width: 100%;
+}
+
+/* Gallery images should be auto width for centering */
+.galleryImage {
+  width: auto !important;
+  margin: 3rem 0 0 !important;
+}
+
+@media (min-width: 580px) {
+  .galleryImage {
+    margin: 3rem 1.5rem 0 !important;
+  }
+}
+
+@media (min-width: 746px) {
+  .galleryImage {
+    margin: 3rem 1.5rem 0 !important;
+  }
+}
+
+/* Mood gallery specific spacing - use !important to override base styles */
+.moodImage {
+  width: auto !important;
+  margin: 3rem 0 0 !important;
+}
+
+@media (min-width: 580px) {
+  .moodImage {
+    margin: 3rem 1.5rem 0 !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .moodImage {
+    margin: 4rem 2rem 0 !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  .moodImage {
+    margin: 5rem 2.5rem 0 !important;
+  }
+}
+
+/* Spacing when image follows text or other elements */
+.imgFigure + p,
+.imgFigure + blockquote,
+.imgFigure + .question,
+.imgFigure + h2,
+.imgFigure + h3,
+.imgFigure + h4 {
+  margin-top: 3rem;
+}
+
+.imgWrapper {
+  width: 100%;
+  display: block;
+  position: relative;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: zoom-in;
+}
+
+/* Zoomed image overlay - matching MIMO exactly */
+.zoomed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+/* Image responsive sizes */
+@media (min-width: 446px) {
+  .imgFigure {
+    width: auto;
+  }
+  .imgWrapper[data-orientation="portrait"],
+  .imgWrapper[data-orientation="square"] {
+    width: 268px;
+  }
+  .imgWrapper[data-orientation="landscape"] {
+    width: 402px;
+  }
+}
+
+@media (min-width: 580px) {
+  .imgFigure {
+    margin: 3rem 1.5rem 0;
+  }
+}
+
+@media (min-width: 746px) {
+  .imgWrapper[data-orientation="portrait"],
+  .imgWrapper[data-orientation="square"] {
+    width: 366px;
+  }
+  .imgWrapper[data-orientation="landscape"] {
+    width: 550px;
+  }
+}
+
+/* First image special styles */
+.firstImage {
+  margin: 3rem 0 0;
+  width: auto;
+}
+
+@media (max-width: 593px) {
+  .firstImage {
+    width: 100%;
+  }
+}
+
+.firstImage .imgWrapper {
+  width: 100%;
+}
+
+@media (min-width: 594px) {
+  .firstImage .imgWrapper[data-orientation="portrait"],
+  .firstImage .imgWrapper[data-orientation="square"] {
+    width: 366px;
+  }
+  .firstImage .imgWrapper[data-orientation="landscape"] {
+    width: 550px;
+  }
+}
+
+@media (min-width: 746px) {
+  .firstImage .imgWrapper[data-orientation="portrait"],
+  .firstImage .imgWrapper[data-orientation="square"] {
+    width: 468px;
+  }
+  .firstImage .imgWrapper[data-orientation="landscape"] {
+    width: 702px;
+  }
+}
+
+/* Caption styles */
+.imgFigure figcaption {
+  color: gray;
+  font-size: calc(var(--f-size) * var(--f-scale-s));
+  line-height: 1rem;
+  letter-spacing: -0.00315856em;
+  text-align: left;
+  margin-top: 0.5rem;
+}

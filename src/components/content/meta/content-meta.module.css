@@ -1,0 +1,48 @@
+.meta {
+  padding: 0 1rem;
+}
+
+.metaContent {
+  margin: 3rem auto;
+  max-width: var(--l-text);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
+  position: relative;
+  padding: 2rem 0 0;
+}
+
+.metaContent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--c-detail);
+}
+
+.metaItem {
+  display: contents;
+}
+
+.metaTitle {
+  font-weight: 500;
+}
+
+.metaText a {
+  background-image: linear-gradient(
+    to right,
+    var(--c-text) 33.33333%,
+    var(--c-bg) 66.66666%
+  );
+  background-size: 300% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  transition: background-position 400ms var(--a-speed);
+}
+
+.metaText a:hover {
+  background-position: bottom right;
+}

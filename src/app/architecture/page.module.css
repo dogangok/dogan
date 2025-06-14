@@ -164,7 +164,7 @@
   .imgFigure .imgWrapper[data-orientation="landscape"] {
     width: 550px;
   }
-  
+
   .editor:not(.gallery)
     .imgFigure:first-of-type
     .imgWrapper[data-orientation="portrait"],
@@ -211,7 +211,11 @@
 }
 
 .metaText a {
-  background-image: linear-gradient(to right, var(--c-text) 33.33333%, var(--c-bg) 66.66666%);
+  background-image: linear-gradient(
+    to right,
+    var(--c-text) 33.33333%,
+    var(--c-bg) 66.66666%
+  );
   background-size: 300% 1px;
   background-repeat: no-repeat;
   background-position: bottom left;

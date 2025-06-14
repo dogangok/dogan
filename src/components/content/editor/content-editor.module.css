@@ -1,0 +1,89 @@
+.editor {
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.editor * {
+  text-align: left;
+}
+
+.editor > p:first-child {
+  margin-top: 2rem;
+}
+
+/* Variant specific styles */
+.default > p:first-child {
+  margin-top: 3rem;
+}
+
+.editor a:not(.imgWrapper):not(.button) {
+  background-image: linear-gradient(
+    to right,
+    var(--c-text) 33.33333%,
+    var(--c-bg) 66.66666%
+  );
+  background-size: 300% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  transition: background-position 400ms var(--a-speed);
+}
+
+.editor a:not(.imgWrapper):not(.button):hover {
+  background-position: bottom right;
+}
+
+.editor p {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: var(--l-text);
+  margin-bottom: 1rem;
+}
+
+/* Mood variant styles */
+.mood {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.mood * {
+  text-align: center;
+}
+
+/* Add margin bottom to mood editor for spacing before gallery */
+.mood p:last-child {
+  margin-bottom: 3rem;
+}
+
+/* Gallery variant styles */
+.gallery {
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 1200px) {
+  .gallery {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .gallery {
+    padding-bottom: 5rem;
+  }
+}
+
+/* Mood gallery specific */
+.mood.gallery {
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 1200px) {
+  .mood.gallery {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .mood.gallery {
+    padding-bottom: 5rem;
+  }
+}
