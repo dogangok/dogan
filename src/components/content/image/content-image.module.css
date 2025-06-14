@@ -1,69 +1,29 @@
 .imgFigure {
-  display: block; /* Changed from inline-block for mobile */
+  display: inline-block;
   vertical-align: middle;
   margin: 3rem 0 0;
   width: 100%;
 }
 
-@media (min-width: 446px) {
-  .imgFigure {
-    display: inline-block;
-  }
-}
+/* Gallery images inherit from base imgFigure styles */
+/* No special overrides needed to match MIMO */
 
-/* Gallery images should be auto width for centering */
-.galleryImage {
-  width: 100% !important; /* Full width on mobile */
-  margin: 3rem 0 0 !important;
-}
-
-/* Switch to auto width on larger screens */
-@media (min-width: 446px) {
-  .galleryImage {
-    width: auto !important;
-  }
-}
-
-@media (min-width: 580px) {
-  .galleryImage {
-    margin: 3rem 1.5rem 0 !important;
-  }
-}
-
-@media (min-width: 746px) {
-  .galleryImage {
-    margin: 3rem 1.5rem 0 !important;
-  }
-}
-
-/* Mood gallery specific spacing - use !important to override base styles */
-.moodImage {
-  width: 100% !important; /* Full width on mobile */
-  margin: 3rem 0 0 !important;
-}
-
-/* Switch to auto width on larger screens */
-@media (min-width: 446px) {
-  .moodImage {
-    width: auto !important;
-  }
-}
-
+/* Mood gallery specific spacing - matching MIMO exactly */
 @media (min-width: 580px) {
   .moodImage {
-    margin: 3rem 1.5rem 0 !important;
+    margin: 3rem 1.5rem 0;
   }
 }
 
 @media (min-width: 1200px) {
   .moodImage {
-    margin: 4rem 2rem 0 !important;
+    margin: 4rem 2rem 0;
   }
 }
 
 @media (min-width: 1500px) {
   .moodImage {
-    margin: 5rem 2.5rem 0 !important;
+    margin: 5rem 2.5rem 0;
   }
 }
 
@@ -81,11 +41,7 @@
   width: 100%;
   display: block;
   position: relative;
-  border: none;
-  padding: 0;
-  background: none;
   cursor: zoom-in;
-  overflow: hidden; /* Ensure image doesn't overflow */
 }
 
 .img {
@@ -116,21 +72,7 @@
   cursor: zoom-out;
 }
 
-/* Image responsive sizes */
-/* Mobile base: ensure images have width */
-.imgWrapper[data-orientation="portrait"],
-.imgWrapper[data-orientation="square"] {
-  width: 100%;
-  max-width: 268px;
-  margin: 0 auto;
-}
-
-.imgWrapper[data-orientation="landscape"] {
-  width: 100%;
-  max-width: 402px;
-  margin: 0 auto;
-}
-
+/* Image responsive sizes - matching MIMO exactly */
 @media (min-width: 446px) {
   .imgFigure {
     width: auto;
@@ -138,11 +80,9 @@
   .imgWrapper[data-orientation="portrait"],
   .imgWrapper[data-orientation="square"] {
     width: 268px;
-    max-width: none;
   }
   .imgWrapper[data-orientation="landscape"] {
     width: 402px;
-    max-width: none;
   }
 }
 
@@ -162,15 +102,15 @@
   }
 }
 
-/* First image special styles */
+/* First image special styles - matching MIMO's :first-of-type approach */
 .firstImage {
   margin: 3rem 0 0;
-  width: 100%; /* Default to full width */
+  width: auto;
 }
 
-@media (min-width: 594px) {
+@media (max-width: 593px) {
   .firstImage {
-    width: auto;
+    width: 100%;
   }
 }
 
@@ -206,4 +146,22 @@
   letter-spacing: -0.00315856em;
   text-align: left;
   margin-top: 0.5rem;
+}
+
+/* Caption link styles - matching MIMO */
+.imgFigure figcaption a:not(.imgWrapper) {
+  font-size: inherit;
+  background-image: linear-gradient(
+    to right,
+    gray 33.33333%,
+    var(--c-bg) 66.66666%
+  );
+  background-size: 300% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  transition: background-position 400ms var(--a-speed);
+}
+
+.imgFigure figcaption a:not(.imgWrapper):hover {
+  background-position: bottom right;
 }

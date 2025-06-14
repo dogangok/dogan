@@ -6,3 +6,25 @@
 .mood .intro {
   margin-bottom: 3rem;
 }
+
+/* Mood gallery editor styles - matching MIMO exactly */
+.editor {
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.gallery {
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 1200px) {
+  .gallery {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .gallery {
+    padding-bottom: 5rem;
+  }
+}
