@@ -55,22 +55,24 @@ export default function ContentGallery({
   const enhancedChildren = childrenArray.map((child, index) => {
     if (child.type && child.props) {
       // Only add onImageClick if it's not already provided
-      const props = child.props.onImageClick
-        ? child.props
-        : { ...child.props, onImageClick: () => setZoomedIndex(index) };
+      const childProps = child.props as any;
+      const props = childProps.onImageClick
+        ? childProps
+        : { ...childProps, onImageClick: () => setZoomedIndex(index) };
       return cloneElement(child, props);
     }
     return child;
   });
 
   const currentImage = zoomedIndex !== null ? childrenArray[zoomedIndex] : null;
+  const currentImageProps = currentImage?.props as any;
 
   return (
     <>
       <div className={`${styles.gallery} ${className || ""}`}>
         {enhancedChildren}
       </div>
-      {zoomedIndex !== null && currentImage && (
+      {zoomedIndex !== null && currentImage && currentImageProps && (
         <button
           type="button"
           className={styles.zoomOverlay}
@@ -78,10 +80,10 @@ export default function ContentGallery({
           aria-label="Close zoomed image"
         >
           <Image
-            src={currentImage.props.src}
-            alt={currentImage.props.alt}
-            width={currentImage.props.width}
-            height={currentImage.props.height}
+            src={currentImageProps.src}
+            alt={currentImageProps.alt}
+            width={currentImageProps.width}
+            height={currentImageProps.height}
             className={styles.zoomedImage}
             quality={90}
             onClick={() => setZoomedIndex(null)}
