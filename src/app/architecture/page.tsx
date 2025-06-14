@@ -20,7 +20,7 @@ export default function ArchitecturePage() {
             <Image
               alt="The Unfolding Home by ACOS"
               className={styles.img}
-              src="/the-unfolding-home-acos-10.jpg"
+              src="/images/the-unfolding-home-acos-10.jpg"
               width={1500}
               height={1000}
               sizes="(max-width: 446px) 402px, (max-width: 600px) 504px, 702px"
