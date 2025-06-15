@@ -6,7 +6,6 @@
   grid-column: 1 / 4;
   grid-row: 1;
   z-index: 10;
-  position: relative;
 }
 
 @media (min-width: 750px) {
@@ -44,8 +43,7 @@
   height: 32px;
   padding: 5px;
   right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 1.35rem;
   color: var(--c-bg);
   border: 1px solid var(--c-text);
   z-index: 9999;
@@ -64,4 +62,10 @@
   width: 100%;
   height: 100%;
   fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .searchInput {
+    font-size: 16px; /* Prevents iOS zoom */
+  }
 }
