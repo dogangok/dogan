@@ -39,10 +39,10 @@
   );
   background-size: 300% 1px;
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: bottom right;
   transition: background-position 400ms var(--a-speed);
 }
 
 .metaText a:hover {
-  background-position: bottom right;
+  background-position: bottom left;
 }
