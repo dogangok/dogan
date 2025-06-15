@@ -37,7 +37,8 @@ export default function Menu() {
         type="button"
         className={`${styles.menuBtn} border-bottom`}
         onClick={toggleMenu}
-        aria-label="Light/Dark Mode"
+        aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
       >
         Menu
       </button>

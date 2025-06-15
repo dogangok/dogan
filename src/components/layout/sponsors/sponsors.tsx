@@ -56,7 +56,7 @@ export default function Sponsors() {
               <a
                 className={styles.sponsorLink}
                 target="_blank"
-                aria-label="Visit Sponsor"
+                aria-label={`Visit sponsor: ${sponsor.tagline}`}
                 href={sponsor.href}
                 rel="noopener noreferrer"
               >

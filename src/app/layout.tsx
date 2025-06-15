@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider>
           <Header />
           <Menu />
-          {children}
+          <main>{children}</main>
           <Archives />
           <Newsletter />
           <Sponsors />
